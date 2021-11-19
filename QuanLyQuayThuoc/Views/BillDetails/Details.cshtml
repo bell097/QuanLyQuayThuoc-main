@@ -1,0 +1,65 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.BillDetail>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Chi tiết hóa đơn</h2>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table id="example1" class="table table-bordered table-striped" method="Get">
+                            <thead>
+                                <tr>
+
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Product.product_name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.quantitySale)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.unitPriceSale)
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Product.product_name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.quantitySale)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.unitPriceSale)
+                                        </td>
+                                        @*<td>
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.billdetail_id })
+                                            </td>*@
+                                    </tr>
+}
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>

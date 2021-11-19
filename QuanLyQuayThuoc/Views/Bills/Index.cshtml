@@ -5,48 +5,65 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">         
+                        <table id="example1" class="table table-bordered table-striped" method="Get">
+                            <thead>
+                                <tr>
+                                    <th>Số điện thoại</th>
+                                    <th>Người mua</th>
+                                    <th>Người bán</th>
+                                    <th>Ngày bán</th>
+                                    <th>Tổng tiền</th>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Customer.cus_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bill_total)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.bill_date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.seller)
-        </th>
-        <th></th>
-    </tr>
+                                    <th></th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Customer.cus_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bill_total)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.bill_date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.seller)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.bill_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.bill_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.bill_id })
-        </td>
-    </tr>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.cus_Phone)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(m => item.Customer.cus_Name)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(m => item.seller)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(m => item.bill_date)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(m => item.bill_total)
+                                    </td>
+
+                                    <td>
+                                        @*<a class='btn btn-default btn-sm' style='margin-left:5px' href="/Distributors/Edit/@item.dis_id"><i class='fa fa-edit'></i> Sửa</a>*@
+                                        <a class='btn btn-default btn-sm' style='margin-left:5px' href="/BillDetails/Details/@item.bill_id"><i class='fa fa-edit'></i>Chi tiết</a>
+                                    </td>
+
+                                </tr>
 }
-
-</table>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
