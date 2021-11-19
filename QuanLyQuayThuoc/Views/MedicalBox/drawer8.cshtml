@@ -1,0 +1,107 @@
+﻿@model PagedList.IPagedList<QuanLyQuayThuoc.Models.Product>
+@using PagedList;
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "drawer8";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ Lọc Theo Giá</h3>
+                <div id="slider-range" class="border-primary"></div>
+                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+            </div>
+            <div class="col-lg-6 text-lg-right">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ Lọc</h3>
+                <button type="button" class="btn btn-primary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
+                        data-toggle="dropdown">
+                    Tham Khảo
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                    <a class="dropdown-item" href="#">Relevance</a>
+                    <a class="dropdown-item" href="#">Name, A to Z</a>
+                    <a class="dropdown-item" href="#">Name, Z to A</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Price, low to high</a>
+                    <a class="dropdown-item" href="#">Price, high to low</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="site-wrap">
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+
+                {
+                    <h2> <strong class="text-black">@item.SmallCategory.smallcategory_name</strong></h2>
+                    break;
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<form style="text-align:center; margin-left:auto" action="@Url.Action("drawer8", "MedicalBox")" method="post">
+    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm kiếm" />
+    @*<input type="text" class="form-control" placeholder="Search keyword and hit enter...">*@
+</form>
+<div class="site-section bg-light">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-sm-6 col-lg-3 text-center item mb-3 item-v2">
+                    @if (item.product_saleprice < item.product_imprice)
+                    {
+                        <span class="onsale">Sale</span>
+                    }
+                    else
+                    {
+
+                    }
+                    <a href="@Url.Action("DetailsProduct","Product",new {id = item.product_id})"> <img src="~/Assets/images/@item.product_image" alt="Image"></a>
+                    <h3 class="text-dark"><a href="@Url.Action("DetailsProduct","Product",new {id = item.product_id})">@item.product_name</a></h3>
+                    <strong class="price">
+                        @if (item.product_saleprice >= item.product_imprice)
+                        {
+                            <a href="@Url.Action("DetailsProduct", "Product", new { id = item.product_id })">@item.product_saleprice</a>
+                        }
+                        else
+                        {
+                            <del href="@Url.Action("DetailsProduct", "Product", new { id = item.product_id })">@item.product_imprice</del>
+                            <a href="@Url.Action("DetailsProduct", "Product", new { id = item.product_id })">&rarr; @item.product_saleprice</a>
+                        }
+                    </strong>
+                    <br />
+                    <a><big>Số Lượng Còn: </big>@item.product_quantity Sản phẩm</a>
+
+                </div>
+
+            }
+
+
+        </div>
+
+    </div>
+    <a style="margin-right: 270px;"> @Html.PagedListPager(Model, page => Url.Action("drawer8", new { page, currentFilter = ViewBag.CurrentFilter }))</a>
+
+</div>
+<p style="text-align:center">@Html.ActionLink("Trở Về Tủ Thuốc", "IndexMedicalBox", "MedicalBox")</p>
+
+

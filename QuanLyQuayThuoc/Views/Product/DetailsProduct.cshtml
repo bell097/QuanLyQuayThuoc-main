@@ -1,0 +1,203 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Product>
+
+@{
+    ViewBag.Title = "DetailsProduct";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+
+
+
+@foreach (var item in Model)
+{
+    <div>
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0">
+                        <strong class="text-black">@item.product_name</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 mr-auto">
+                        <div class="border text-center">
+                            <img src="~/Assets/images/@item.product_image" alt="Image" class="img-fluid p-5">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="text-black">@item.product_name</h2>
+                        <strong class="text-black">
+
+                            <Big class="text-black">Thành Phần:</Big><a href="@Url.Action("ViewSmallCategory", "Category", new { @id = item.smallcategory_id }, null)"> @item.SmallCategory.smallcategory_name</a>
+
+                            @if (item.product_packing == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <br /> <a><Big>Quy Cách:</Big> @item.product_packing</a>
+                            }
+                            @if (item.product_format == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <br /> <a><Big>Dạng Bào Chế:</Big> @item.product_format</a>
+                            }
+
+                            @if (item.prescription_drugs == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <br /> <a><Big>Thuốc Kê Đơn:</Big> @item.prescription_drugs</a>
+                            }
+                            <br />
+                            @if (item.product_user == null)
+                            {
+                                <a><Big>Phù Hợp Với Mọi Đối Tượng</Big></a>
+                            }
+                            else
+                            {
+                                <a><Big>Đối Tượng Sử Dụng:</Big> @item.product_user</a>
+                            }
+                            @if (item.product_uses == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <br /> <a><Big>Cách Sử Dụng:</Big> @item.product_uses</a>
+                            }
+                            @if (item.product_number == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <br /> <a><Big>Số Đăng Ký:</Big> @item.product_number</a>
+                            }
+                            @if (item.product_warning == null)
+                            {
+
+                            }
+                            else
+                            {
+                                <br /> <a><Big>Cảnh Báo:</Big> @item.product_warning</a>
+                            }
+                            <br />
+
+
+                        </strong>
+                        @if (item.product_saleprice >= item.product_imprice)
+                        {
+                            <p> <strong class="text-black"><Big>Giá:</Big></strong><strong class="text-primary h4">@item.product_saleprice</strong></p>
+                        }
+                        else
+                        {
+                            <p> <strong class="text-black"><Big>Giá:</Big></strong><del> @item.product_imprice</del><strong class="text-primary h4">@item.product_saleprice</strong></p>
+                        }
+
+
+
+
+                        <div class="mb-5">
+                            <div class="input-group mb-3" style="max-width: 220px;">
+                                <div class="input-group-prepend">
+                                    <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                </div>
+                                <input type="text" class="form-control text-center" value="1" placeholder=""
+                                       aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p><a href="/Cart/AddItem/@item.product_id" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Thêm Vào Giỏ</a></p>
+                        <p><a href="@Url.Action("ViewContact", "Contact")" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Liên Hệ Quầy Thuốc</a></p>
+
+                        <div class="mt-5">
+                            <ul class="nav nav-pills mb-3 custom-pill" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
+                                       aria-controls="pills-home" aria-selected="true">Thông Tin Thuốc</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
+                                       aria-controls="pills-profile" aria-selected="false">Xuất Sứ</a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <table class="table custom-table">
+                                        <thead>
+                                        <th>Mã Sản Phẩm</th>
+                                        <th>Thành Phần</th>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">@item.product_id</th>
+                                                <td></td>
+
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                                    <table class="table custom-table">
+                                        <thead>
+                                        <th>Nhà Sản Xuất</th>
+                                        <th>Xuất Xứ</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>@item.Brand.brand_name</td>
+
+                                                <td class="bg-light">@item.Origin.origin_name</td>
+                                            </tr>
+
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a class="text-black"> <Big class="text-black">&emsp;Mô Tả:</Big> @Html.Raw(item.product_description)</a>
+
+        <div class="site-section bg-image overlay" style="background-image: url(../../Assets/images/hero_bg_2.jpg)">
+            <div class="container">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-7">
+                        <h3 class="text-white">Đăng Kí Nhận Ưu Đãi Lớn</h3>
+                        <p class="text-white">Nhiều VuChờ Hấp Dẫn</p>
+                        <p class="mb-0"><a href="#" class="btn btn-outline-white">Đăng Ký</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+

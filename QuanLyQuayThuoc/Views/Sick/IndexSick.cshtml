@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.CategorySick>
+
+@{
+    ViewBag.Title = "IndexSick";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black" href="@Url.Action("IndexSick", "Sick")">Bệnh</a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    break;
+}
+<div class="ss-view-body">
+    <div class="container">
+
+        <div class="row" style="background-color: #3a9db8; ">
+            <h2 style="width: 1140px; color: #414141;">Xem Bộ Phận Cơ Thể</h2>
+            <br />
+            <div class="col-sm-4 col-xs-12 btn-main">
+                <div class="row">
+                    <div class="col-sm-9 col-xs-9 xoa">
+                        <img src="https://nhathuoclongchau.com/upload/images/benh-category/1/xem-theo-bo-phan-co-the-1-2018-05-16-351276033.png" />
+                    </div>
+
+                    <div class="col-sm-3 col-xs-3 btn-bp" style="background-color: #3a9db8; padding: 0px; ">
+                        @foreach (var item in Model)
+                        {
+                            <a class="nut-btn active" data-tab="body-content-item1" href="@Url.Action("IndexSmallSick", "Sick", new { id = item.categorySick_id })" style=" background-color: #f4f4f4; border-radius: 4px 4px 4px 4px; margin-bottom: 25px; padding:9px 10px; width: 100px; text-align:center; height:40px; display:block; font-size: 16px;">@item.categorySick_name</a>
+                        }
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+

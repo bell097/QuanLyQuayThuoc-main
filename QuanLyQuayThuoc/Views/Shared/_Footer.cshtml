@@ -1,0 +1,43 @@
+﻿
+<footer class="site-footer bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">
+
+                <div class="block-7">
+                    <h3 class="footer-heading mb-4">Giới Thiệu Về <strong class="text-primary">Minh Hoàng</strong></h3>
+                    <p>
+                        Ở đây có nhiều thuốc Vip và Pro.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-lg-3 mx-auto mb-5 mb-lg-0">
+                <h3 class="footer-heading mb-4">Danh Mục</h3>
+                @foreach (var item in ViewBag.category)
+                {
+                    <ul class="list-unstyled">
+                        <li> <a href="@Url.Action("ViewCategory", "Category", new { @id = item.category_id}, null)">@item.category_name</a></li>
+
+                    </ul>
+                }
+            </div>
+            @foreach (var item in ViewBag.contact)
+            {
+                <div class="col-md-6 col-lg-3">
+                    <div class="block-5 mb-5">
+                      
+                        <h3 class="footer-heading mb-4">Thông Tin Liên Hệ</h3>
+                        <ul class="list-unstyled">
+                            <li class="address">Nha Trang</li>
+                            <li class="phone"><a href="tel://23923929210">Không Nhớ</a></li>
+                            <li class="email">HoangBeDe@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</footer>

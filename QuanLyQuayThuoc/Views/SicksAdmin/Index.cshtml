@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Sick>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategorySick.categorySick_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sick_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sick_content)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategorySick.categorySick_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sick_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sick_content)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.sick_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.sick_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.sick_id })
+        </td>
+    </tr>
+}
+
+</table>

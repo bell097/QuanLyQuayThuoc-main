@@ -1,0 +1,105 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Product>
+@{
+    ViewBag.Title = "ProductCategory";
+    Layout = "~/Views/Shared/MainLayout.cshtml";
+}
+
+
+
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ Lọc Theo Giá</h3>
+                <div id="slider-range" class="border-primary"></div>
+                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+            </div>
+            <div class="col-lg-6 text-lg-right">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Bộ Lọc</h3>
+                <button type="button" class="btn btn-primary btn-md dropdown-toggle px-4" id="dropdownMenuReference"
+                        data-toggle="dropdown">
+                    Tham Khảo
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                    <a class="dropdown-item" href="#">Relevance</a>
+                    <a class="dropdown-item" href="#">Name, A to Z</a>
+                    <a class="dropdown-item" href="#">Name, Z to A</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Price, low to high</a>
+                    <a class="dropdown-item" href="#">Price, high to low</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-wrap">
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+
+                {
+                <h2> <strong class="text-black">@item.SmallCategory.smallcategory_name</strong></h2>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="site-section bg-light">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-sm-6 col-lg-3 text-center item mb-3 item-v2">
+                    @if (item.product_saleprice < item.product_imprice)
+                    {
+                    <span class="onsale">Sale</span>
+                    }
+                    else
+                    {
+
+                    }
+                    <a href="@Url.Action("DetailsProduct","Product",new {id = item.product_id})"> <img src="~/Assets/images/@item.product_image" alt="Image"></a>
+                    <h3 class="text-dark"><a href="shop-single.html">@item.product_name</a></h3>
+                    <strong class="price">
+                        @if (item.product_saleprice >= item.product_imprice)
+                        {
+                            <a>@item.product_saleprice</a>
+                        }
+                        else
+                        {
+                            <del>@item.product_imprice</del>
+                            <a>&rarr; @item.product_saleprice</a>
+                        }
+                    </strong>
+
+                </div>
+
+            }
+
+
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

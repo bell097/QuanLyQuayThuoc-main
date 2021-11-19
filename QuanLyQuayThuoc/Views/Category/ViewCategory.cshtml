@@ -1,0 +1,92 @@
+﻿@model PagedList.IPagedList<QuanLyQuayThuoc.Models.Product>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "ViewCategory";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@foreach (var item in Model)
+{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black" href="#">@item.SmallCategory.Category.category_name</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    break;
+}
+
+
+
+
+<div class="site-wrap">
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+
+                {
+                    <h2> <strong class="text-black">@item.SmallCategory.Category.category_name</strong></h2>
+                    break;
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<form style="text-align:center; margin-left:auto" action="@Url.Action("ViewCategory", "Category")" method="post">
+    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    <input type="submit" value="Tìm kiếm" />
+    @*<input type="text" class="form-control" placeholder="Search keyword and hit enter...">*@
+</form>
+<div class="site-section bg-light">
+    <div class="container">
+
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+
+
+                <div class="col-sm-6 col-lg-3 text-center item mb-3 item-v2">
+                    @if (item.product_saleprice < item.product_imprice)
+                    {
+                        <span class="onsale">Sale</span>
+                    }
+                    else
+                    {
+
+                    }
+                    <a href="@Url.Action("DetailsProduct","Product",new {id = item.product_id})"> <img src="~/Assets/images/@item.product_image" alt="Image"></a>
+                    <h3 class="text-dark"><a href="@Url.Action("DetailsProduct","Product",new {id = item.product_id})">@item.product_name</a></h3>
+                    <strong class="price">
+                        @if (item.product_saleprice >= item.product_imprice)
+                        {
+                            <a href="@Url.Action("DetailsProduct","Product",new {id = item.product_id})">@item.product_saleprice</a>
+                        }
+                        else
+                        {
+                            <del href="@Url.Action("DetailsProduct", "Product", new { id = item.product_id })">@item.product_imprice</del>
+                            <a href="@Url.Action("DetailsProduct", "Product", new { id = item.product_id })">&rarr; @item.product_saleprice</a>
+                        }
+                    </strong>
+                    <p><a href="/Cart/AddItem/@item.product_id" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Thêm Vào Giỏ</a></p>
+                </div>
+
+            }
+
+
+        </div>
+
+    </div>
+    <a style="margin-right: 270px;"> @Html.PagedListPager(Model, page => Url.Action("ViewCategory", new { page, currentFilter = ViewBag.CurrentFilter }))</a>
+
+</div>
+

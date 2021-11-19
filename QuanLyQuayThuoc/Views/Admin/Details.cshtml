@@ -1,0 +1,303 @@
+﻿@*@model QuanLyQuayThuoc.Models.Product
+
+    @{
+        ViewBag.Title = "Details";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }
+
+    <h2>Details</h2>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                         /.card-header
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped" method="Get">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_id)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Brand.brand_name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Origin.origin_name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.SmallCategory.smallcategory_name)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_image)
+                                            @Html.DisplayName("Hình ảnh")
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_format)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_packing)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_user)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_uses)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_treatment)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_number)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_warning)
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.product_description)
+                                        </th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Brand.brand_name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.Origin.origin_name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.SmallCategory.smallcategory_name)
+                                        </td>
+                                        <td>
+                                            <img src="~/@Html.DisplayFor(model => model.product_image)" width="95" />
+                                            <img src="~/Assets/images/@Html.DisplayFor(model => model.product_image)" width="95" />
+
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_format)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_packing)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_user)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_uses)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_treatment)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_number)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_warning)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(model => model.product_description)
+                                        </td>
+
+    </table>
+                            @Html.Raw(Model.product_description)
+                        </div>
+                         /.card-body
+                    </div>
+                     /.card
+                </div>
+                 /.col
+            </div>
+             /.row
+        </div>
+         /.container-fluid
+    </section>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@
+@model QuanLyQuayThuoc.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="header bg-primary pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--6">
+    <div class="row">
+        @*<div class="col-xl-8 order-xl-1">*@
+        <div class="card">
+            <div class="card-header">
+                <div class="row align-items-center">
+                    <div class="col-12">
+                        <h3 class="mb-0">Thông tin sản phẩm @Model.product_name</h3>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="pl-lg-4">
+                    <div class="row">
+
+                        <div class="col-lg-4">
+                            <label class="form-control-label" for="tittle">Mã sản phẩm</label>
+                            <input type="text" class="form-control" disabled value="@Model.product_id" />
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Tên sản phẩm</label>
+                                <input type="text" class="form-control" disabled value="@Model.product_name" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Thương hiệu</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.Brand.brand_name)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Danh mục</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.SmallCategory.smallcategory_name)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Giá nhập</label>
+                                <input type="text" class="form-control" disabled value=" @Html.DisplayFor(model => model.product_imprice)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Xuất xứ</label>
+                                <input type="text" class="form-control" disabled value=" @Html.DisplayFor(model => model.Origin.origin_name)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Số đăng ký</label>
+                                <input type="text" class="form-control" disabled value=" @Html.DisplayFor(model => model.product_number)" />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Giá bán</label>
+                                <input type="text" class="form-control" disabled value=" @Html.DisplayFor(model => model.product_saleprice)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-email">Hình ảnh</label>
+                                <br />
+                                <img src="~/Assets/images/@Html.DisplayFor(model => model.product_image)" style="height:200px;width:400px;margin-left:20px" width="95" />
+
+                                <br />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Dạng bào chế</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.product_format)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Quy cách</label>
+                                <input type="text" class="form-control" disabled value=" @Html.DisplayFor(model => model.product_packing)" />
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Thuốc cần kê đơn</label>
+                                <input type="text" class="form-control" disabled value=" @Html.DisplayFor(model => model.prescription_drugs)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Đối tượng sử dụng</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.product_user)" />
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Điều trị</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.product_treatment)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Cảnh báo</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.product_warning)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Số lượng</label>
+                                <input type="text" class="form-control" disabled value="@Html.DisplayFor(model => model.product_quantity)" />
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label class="form-control-label" for="input-email">Trạng thái</label>
+                                @if (Model.product_status == 1)
+                                {
+                                    <input type="text" class="form-control" disabled value="Còn bán" />
+                                }
+                                else if (Model.product_status == null)
+                                {
+                                    <input type="text" class="form-control" disabled value="Đợi duyệt" />
+                                }
+                                else if (Model.product_status == 0)
+                                {
+                                    <input type="text" class="form-control" disabled value="Ngưng bán" />
+                                }
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label class="form-control-label" for="tittle">Mô tả</label>
+                                @*<input type="text" class="form-control" disabled value=" @Html.Raw(Html.DisplayFor(model => model.product_description))" />*@
+                                @Html.Raw(Model.product_description)
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </div>
+                <div class="">
+                    <a class="btn btn-primary my-4" href="@Url.Action("List","Product")">OK</a>
+                </div>
+
+
+            </div>
+        </div>
+    </div>

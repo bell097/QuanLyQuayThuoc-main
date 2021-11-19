@@ -1,0 +1,59 @@
+﻿@model QuanLyQuayThuoc.Models.Customer
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>&ensp;Đăng Ký Khách Hàng</h2>
+<div class="col-md-4 col-md-offset-4" style="margin-left: 400px; border-radius: 10px 10px 10px 10px; border: 1px solid black;">
+
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.cus_id)
+
+            
+
+            <div class="form-group">
+                <strong style="margin-left:30px">Nhập số điện thoại</strong>
+                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px" required>
+                    @Html.EditorFor(model => model.cus_Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cus_Phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <strong style="margin-left:30px">Nhập tên khách hàng</strong>
+                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px" required>
+                    @Html.EditorFor(model => model.cus_Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.cus_Name, "", new { @class = "text-danger" } )
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <button style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 115px; background-color: #5cb85c;"> <input type="submit" value="Lưu" class="btn btn-default" onclick="return confirm('Đã đăng kí thành công!')" style="background-color: #5cb85c;" /></button>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="col-md-6">
+    <div class="row mb-5">
+
+        <div class="col-md-6">
+            <button class="btn btn-outline-primary btn-md btn-block"><a href="@Url.Action("ViewCart","Cart")">Trở Về Giỏ Hàng</a> </button>
+        </div>
+    </div>
+
+</div>

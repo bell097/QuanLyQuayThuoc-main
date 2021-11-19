@@ -1,0 +1,51 @@
+﻿@model QuanLyQuayThuoc.Models.Bill
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bill</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.cus_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.cus_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bill_total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bill_total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bill_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bill_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.seller)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.seller)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.bill_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

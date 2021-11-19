@@ -1,0 +1,169 @@
+﻿@model QuanLyQuayThuoc.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có muốn xóa sản phẩm này?</h3>
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Brand.brand_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Brand.brand_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Origin.origin_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Origin.origin_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SmallCategory.smallcategory_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SmallCategory.smallcategory_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_format)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_format)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_packing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_packing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_user)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_user)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_uses)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_uses)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_treatment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_treatment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_warning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_warning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prescription_drugs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prescription_drugs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_imprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_imprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_saleprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_saleprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.product_quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.product_quantity)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,40 @@
+﻿
+
+@model IEnumerable<QuanLyQuayThuoc.Models.Product>
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="title-section text-center col-12">
+                <h2>Dược Mỹ Phẩm<strong class="text-primary"> Mới</strong></h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 block-3 products-wrap">
+
+                <div class="nonloop-block-3 owl-carousel">
+                    @foreach (var hot in Model)
+                    {
+                    <div class="text-center item mb-4 item-v2">
+                        @if (hot.product_saleprice < hot.product_imprice)
+                        {
+                            <span class="onsale">Giảm Giá</span>
+                        }
+                        else
+                        {
+
+                        }
+                        <a href="@Url.Action("DetailsProduct","Product",new {id = hot.product_id})"> <img src="~/Assets/images/@hot.product_image" alt="Image"></a>
+                        <h3 class="text-dark"><a href="@Url.Action("DetailsProduct","Product",new {id = hot.product_id})" style="width: 500px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">@hot.product_name</a></h3>
+                        <p class="price">@hot.product_saleprice</p>
+                        <p><a href="/Cart/AddItem/@hot.product_id" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Thêm Vào Giỏ</a></p>
+                    </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+

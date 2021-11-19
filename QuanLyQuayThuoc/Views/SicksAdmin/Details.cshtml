@@ -1,0 +1,43 @@
+﻿@model QuanLyQuayThuoc.Models.Sick
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sick</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CategorySick.categorySick_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategorySick.categorySick_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sick_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sick_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sick_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sick_content)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.sick_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

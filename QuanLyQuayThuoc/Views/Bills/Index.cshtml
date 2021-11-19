@@ -1,0 +1,52 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Bill>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Customer.cus_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bill_total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.bill_date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.seller)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.cus_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bill_total)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.bill_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.seller)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.bill_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.bill_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.bill_id })
+        </td>
+    </tr>
+}
+
+</table>

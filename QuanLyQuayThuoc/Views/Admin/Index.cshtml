@@ -1,0 +1,96 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Product>
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <a class="btn btn-success" style="margin-bottom:10px" href="/Admin/Create"><i class="fa fa-plus"></i></a>
+                        <table id="example1" class="table table-bordered table-striped" method="Get">
+                            <thead>
+                                <tr>
+                                    <th>                                       
+                                        @Html.DisplayName("Tên sản phẩm")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Thương hiệu")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Xuất xứ")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Danh mục")
+                                    </th>
+                                    <th>
+                                        @Html.DisplayName("Hình ảnh")
+                                    </th>
+                                    @*<th>Trạng thái</th>*@
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.product_format)
+                                    </th>
+                                    <th>
+                                        @Html.Displ ayNameFor(model => model.product_quantity)
+                                    </th>*@
+                                    <td></td>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.product_name)
+                                        <a href="/Admin/Details/@item.product_id" ></a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Brand.brand_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Origin.origin_name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.SmallCategory.smallcategory_name)
+                                    </td>                                
+                                    <td>
+                                        <img src="~/Assets/images/@item.product_image" width="95" />                                    
+                                    </td>
+                                    
+                                    @*<td><a href="#" class="btn-active"data-id="@item.product_id">@(item.product_status ? "Còn bán" : "Đã ngưng bán")</a></td>*@
+                                    
+                                    <td>
+                                        <a class='btn btn-default btn-sm' style='margin-left:5px' href="/Admin/Edit/@item.product_id"><i class='fa fa-edit'></i>Sửa</a>
+                                        <a class='btn btn-danger btn-sm' style='margin-left:5px' href="/Admin/Delete/@item.product_id"><i class='fa fa-trash'></i>Xóa</a>
+                                        <a class='btn btn-outline-info btn-sm' style='margin-left:5px' href="/Admin/Details/@item.product_id"><i class='fa fa-info'></i>Chi tiết</a>
+
+                                        @*@Ajax.ActionLink("Xóa","Delete", new { @id = item.product_id},new AjaxOptions
+                                   {
+                                       Confirm ="Bạn có muốn xóa sản phẩm",
+                                       OnComplete ="$('#row_"+item.product_id +"').remove()",
+                                       HttpMethod = "Delete"
+                                   })*@
+                                    </td>
+
+                                </tr>
+}
+                            </tbody>
+                           
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+

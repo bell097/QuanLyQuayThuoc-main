@@ -1,0 +1,114 @@
+﻿@model QuanLyQuayThuoc.Models.Product
+@{
+    ViewBag.Title = "IndexMedicalBox";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="owl-carousel owl-single px-0">
+    <div class="site-blocks-cover overlay" style="background-image: url(../../Assets/images/quaythuoc1.png)">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 mx-auto align-self-center">
+                    <div class="site-block-cover-content text-center">
+                        @*<h1 class="mb-0"><strong class="text-primary">Minh Hoàng</strong> Mở Cửa 24h</h1>
+
+                            <div class="row justify-content-center mb-5">
+                                <div class="col-lg-6 text-center">
+                                    <p>Thuốc VIP</p>
+                                </div>
+                            </div>*@
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+           
+<h3 align="top" style="color:black" >Tủ 1</h3>
+<table border="1" style="text-align:center; padding-top: 1200px; color: black" >
+    <tr>    
+        <th colspan="3">@Html.ActionLink("Sinh lý - Nội tiết tố", "drawer1", "MedicalBox")</th>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Sức khỏe tim mạch", "drawer2", "MedicalBox")</td>
+        <td>@Html.ActionLink("Hỗ trợ tiêu hóa", "drawer3", "MedicalBox")</td>
+
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Thần kinh não", "drawer4", "MedicalBox")</td>
+        <td>@Html.ActionLink("Hỗ trợ điều trị", "drawer5", "MedicalBox")</td>
+
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Cải thiện tăng cường chức năng", "drawer6", "MedicalBox")</td>
+        <td>@Html.ActionLink("Thảo dược & thực phẩm tự nhiên", "drawer7", "MedicalBox")</td>
+
+    </tr>
+
+    <tr>
+        <th rowspan="3">@Html.ActionLink("Hỗ trợ làm đẹp", "drawer8", "MedicalBox")</th>
+        <td>Tiền</td>
+    </tr>
+    <tr>
+        <td>Vàng</td>
+    </tr>
+    <tr>
+        <td>Kim cương</td>
+    </tr>
+</table>
+
+<h3 align="top" style="color:black">Tủ 2</h3>
+<table border="1" style="text-align:center;" >
+
+    <tr>
+        <td>@Html.ActionLink("Chăm sóc cơ thể", "drawer9", "MedicalBox")</td>
+        <td>@Html.ActionLink("Chăm sóc da chuyên sâu", "drawer10", "MedicalBox")</td>
+
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Chăm sóc tóc - da dầu", "drawer11", "MedicalBox")</td>
+        <td>@Html.ActionLink("Chăm sóc tóc chuyên sâu", "drawer12", "MedicalBox")</td>
+
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Hỗ trợ tình dục", "drawer13", "MedicalBox")</td>
+        <td>@Html.ActionLink("Chăm sóc răng miệng", "drawer14", "MedicalBox")</td>
+
+    </tr>
+
+</table>
+
+<h3 align="top" style="color:black">Tủ 3</h3>
+<table border="1"  style="text-align:center;">
+    <tr>
+        <th colspan="3">@Html.ActionLink("Vệ sinh cá nhân", "drawer15", "MedicalBox")</th>
+    </tr>
+    <tr>
+        <td>@Html.ActionLink("Tinh dầu các loại", "drawer16", "MedicalBox")</td>
+        <td>@Html.ActionLink("Thực phẩm - Đồ uống", "drawer17", "MedicalBox")</td>
+
+    </tr>
+    <tr>
+        <th colspan="3">@Html.ActionLink("Dụng cụ y tế", "drawer18", "MedicalBox")</th>
+    </tr>
+
+</table>
+
+<h3 align="top" style="color:black">Tủ 4</h3>
+<table border="1" height="100px" width="200px"  style="text-align:center;">
+    <tr>
+        <th>@Html.ActionLink("Khẩu trang - Dụng cụ sơ cứu", "drawer19", "MedicalBox")</th>
+    </tr>
+
+
+</table>
+
+<h3 align="top" style="color:black" >Tủ 5</h3>
+<table border="1" height="100px" width="200px"  style="text-align:center;">
+    <tr>
+        <th>@Html.ActionLink("Thuốc", "drawer20", "MedicalBox")</th>
+    </tr>
+</table>

@@ -1,0 +1,45 @@
+﻿
+@model IEnumerable<QuanLyQuayThuoc.Models.Sick>
+
+@{
+    ViewBag.Title = "IndexSmallSick";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+@foreach (var item in Model)
+{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black" href="@Url.Action("IndexSick", "Sick")">Bệnh</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black">@item.CategorySick.categorySick_name</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    break;
+}
+
+<div class="row" style="background-color: #3a9db8; margin:auto ">
+    @foreach (var item in Model)
+    {
+        <h2 style="width: 1140px; color: #414141; margin: auto ">@item.CategorySick.categorySick_name</h2>
+        break;
+    }
+
+
+
+    <div class="col-sm-8 col-xs-7 body-content" style=" border-radius: 4px; background-color: #fff; width: 750px; height: 400px; margin: auto; margin-top: 20px; margin-bottom: 20px; overflow-y: auto; ">
+        <div>
+            @foreach (var item in Model)
+            {
+                <a  href="@Url.Action("DetailsSick", "Sick", new { id = item.sick_id })"  style="float: left; color: #414141; text-align:left; width: 50%; height:10%; display:inline-block; margin: 0 0 3px; padding: 10px 0 0 40px;">@item.sick_name</a>
+            }
+
+
+        </div>
+    </div>
+</div>

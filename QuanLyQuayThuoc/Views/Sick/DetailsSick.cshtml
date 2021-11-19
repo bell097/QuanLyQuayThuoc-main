@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Sick>
+
+@{ ViewBag.Title = "DetailsSick";
+                Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+
+@foreach (var item in Model)
+{
+<div class="bg-light py-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-0">
+                <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                <span class="mx-2 mb-0">/</span>
+                <a class="text-black" href="@Url.Action("IndexSick", "Sick")">Bệnh</a>
+                <span class="mx-2 mb-0">/</span>
+                <a class="text-black" href="@Url.Action("IndexSmallSick", "Sick", new { id = item.categorySick_id })">@item.CategorySick.categorySick_name</a>
+                <span class="mx-2 mb-0">/</span>
+                <a class="text-black">@item.sick_name</a>
+            </div>
+        </div>
+    </div>
+</div>break;
+            }
+<div>
+    <div class="container">
+        @foreach (var item in Model)
+        {
+<div class="posts-wrapper clearfix">
+
+
+    <div class="content-main">
+
+        <div class="cs-base-custom cs-benh-content">
+
+
+            @Html.Raw(item.sick_content)
+
+        </div>
+    </div>
+
+</div>}
+
+    </div>
+</div>
+

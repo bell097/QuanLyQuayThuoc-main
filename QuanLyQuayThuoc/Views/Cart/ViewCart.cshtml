@@ -1,0 +1,213 @@
+﻿@model QuanLyQuayThuoc.Models.Cart
+
+@{
+    ViewBag.Title = "ShowToCart";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<body>
+
+    
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0">
+                        <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                        <span class="mx-2 mb-0">/</span>
+                        <a class="text-black" href="@Url.Action("ViewCart", "Cart")">Giỏ hàng</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+     
+
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+
+                    <h2> <strong class="text-black">Giỏ Hàng</strong></h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (Model != null)
+    {
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-12">
+                        <div class="site-blocks-table">
+                            <table class="table table-bordered">
+
+
+
+
+                                <thead>
+                                    <tr>
+
+                                        <th class="product-thumbnail">Ảnh</th>
+                                        <th class="product-name">Tên</th>
+                                        <th class="product-price">Giá</th>
+                                        <th class="product-quantity">Số Lượng</th>
+                                        <th class="product-total">Tổng Tiền</th>
+                                        <th class="product-remove">Hủy</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach (var item in Model.Items)
+                                    {
+                                        double total = Convert.ToDouble(item.productCart.product_saleprice.Value * item.quantityCart);
+                            
+
+
+
+                                        <tr>
+                                            <td class="product-thumbnail">
+                                                <img src="~/Assets/images/@item.productCart.product_image" alt="Image" class="img-fluid">
+                                            </td>
+                                            <td class="product-name">
+                                                <h2 class="h5 text-black">@item.productCart.product_name</h2>
+                                            </td>
+                                            <td>@item.productCart.product_saleprice</td>
+
+                                            <td>
+                                                @using (Html.BeginForm("Update_quatity_cart", "Cart"))
+                    {
+                                             
+                                                    <input type="hidden" value="@item.productCart.product_id" name="ID_Product" />
+                                                    <div class="input-group mb-3" style="max-width: 150px;">
+                                                        <div class="input-group-prepend">
+                                                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                                                        </div>
+                                                        <input type="text" class="form-control text-center" value="@item.quantityCart" name="Quantity" placeholder=""
+                                                               aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                                                        </div>
+                                                    </div>
+                                                    @*<input type="number" value="@item.quantityCart" name="Quantity" />*@
+                                                    <input style="text-align: center" type="submit" value="Cập Nhật" />
+                                                
+                                                }
+
+
+
+                                            </td>
+
+                                            <td>@total</td>
+                                            <td><a href="/Cart/RemoveCart/@item.productCart.product_id" class="btn btn-primary height-auto btn-sm">Xóa</a></td>
+                                        </tr>
+
+                                        }
+                                    </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                @if (Session["idUser"] != null)
+                {
+                    using (Html.BeginForm("IndexCheckout", "Cart"))
+                    {
+                        <div>
+                            <tr>
+                                <td colspan="5">
+                                    <table style="border-collapse: separate; border-spacing: 5px;">
+                                        <tr>
+                                            <td>Số điện thoại</td>
+                                            <td>
+                                                <input type="text" name="cus_Phone" required />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Tên nhân viên</td>
+                                            <td>
+                                                <input type="text" name="seller_Name" required />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="@Url.Action("Create", "Customer")" class="btn btn-success">Đăng ký</a>
+                                            </td>
+                                            <td>
+                                                <input type="submit" value="Thanh Toán" class="btn btn-success" />
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </div>
+                    }
+
+                }
+                else
+                {
+
+                }
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row mb-5">
+
+                            <div class="col-md-6">
+                                <button class="btn btn-outline-primary btn-md btn-block"><a href="@Url.Action("IndexProduct","Product")">Tiếp Tục Xem Sản Phẩm</a> </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6 pl-5">
+
+                        <div class="row justify-content-end">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-12 text-right border-bottom mb-5">
+                                        <h3 class="text-black h4 text-uppercase">Tổng Giỏ Hàng</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Tổng Thu</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black">Total: @Model.Total_Money()</strong>
+                                    </div>
+                                </div>
+                                @*<div class="row mb-5">
+                                        <div class="col-md-6">
+                                            <span class="text-black">Toàn Bộ</span>
+                                        </div>
+                                        <div class="col-md-6 text-right">
+                                            <strong class="text-black">Total: @total</strong>
+                                        </div>
+                                    </div>*@
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+
+
+
+</body>
+
+
+
+
+
